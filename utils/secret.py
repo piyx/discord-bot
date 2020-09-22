@@ -5,7 +5,13 @@ CLIENT_SECRET = ""
 USER_AGENT = ""
 
 # Discord token
-TOKEN = ''
+TOKEN = ""
 
 # Weather api_key
-APIKEY = ""
+WEATHER_API = ""
+
+# Youtube api key
+YOUTUBE_API_KEY = ""
+
+# Nasa api
+NASA_API = ""
