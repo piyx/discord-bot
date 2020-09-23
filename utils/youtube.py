@@ -1,10 +1,11 @@
 from googleapiclient.discovery import build
+from .secret import YOUTUBE_API_KEY
 
 
 class Youtube:
     def __init__(self, query):
         self.query = query
-        self.youtube_api_key = "AIzaSyBokshnt1TlNO8qRU41yk7ovNRNsQ38kyI"
+        self.youtube_api_key = YOUTUBE_API_KEY
         self.api_service_name = "youtube"
         self.api_version = "v3"
 
