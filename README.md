@@ -1,3 +1,21 @@
+# Setup
+1. Go to https://discord.com/developers/applications and create an application.
+2. Get the discord token and place it inside utils/secrets.py
+3. Install ffmpeg (Note: You may need to install opus if you're on linux environment) https://ffmpeg.org/download.html#build-windows
+4. `pip install -r requirements.txt`
+5. `python bot.py`
+
+### Note:
+* To get other features to work (weather command and reddit command) you will need to get api key and client secret and paste it in utils/secret.py
+* If you just want to use discord music bot commands then you can keep these files listed below and get rid of others.   
+`cogs/music.py`  
+`cogs/dscrd.py`  
+`utils/embeds.py`  
+`utils/yt_url.py`  
+`utils/secret.py`
+`bot.py`  
+`music/` [This is an empty folder but very important. Don't delete this]
+
 # Bot commands
 
 # Music
