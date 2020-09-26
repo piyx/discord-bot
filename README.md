@@ -18,10 +18,10 @@
 
 # Bot commands
 
-## `Bot prefix is '.'`
-### `To use any command prefix it with '.'`  
-### `Ex: .play happy pharell williams.`  
-* `.pause`
+* `Bot prefix is '.'`
+* `To use any command prefix it with '.'`  
+* `Ex: .play happy pharell williams.`  
+* `.pause`  
 * `.resume`
 <br>
 <hr>
@@ -95,4 +95,3 @@
 
 ### Nasa
 <div style="width:100%"><img src="imgs/nasa.png"/>
-
