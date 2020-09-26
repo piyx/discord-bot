@@ -15,16 +15,15 @@
 ## Usage
 
 ## play
-
-![](imgs/play.png)
+<div style="width:100%"><img src="imgs/play.png"/><br/>
 
 ## Queue
 
-![](imgs/q.png)
+<div style="width:100%"><img src="imgs/q.png"/><br/>
 
 ## Volume
 
-![](imgs/volume.png)
+<div style="width:100%"><img src="imgs/volume.png"/><br/>
 
 # Discord
 
@@ -35,7 +34,7 @@
 
 ## Usage
 
-![](imgs/dscrd.png)
+<div style="width:100%"><img src="imgs/dscrd.png"/><br/>
 
 ## Questions
 
@@ -46,7 +45,7 @@
 
 ## Usage
 
-![](imgs/qs.png)
+<div style="width:100%"><img src="imgs/qs.png"/><br/>
 
 ## Reddit
 
@@ -54,7 +53,7 @@
 
 ## Usage
 
-![](imgs/reddit.png)
+<div style="width:100%"><img src="imgs/reddit.png"/><br/>
 
 ## Sky
 
@@ -66,8 +65,8 @@
 
 ### Weather
 
-![](imgs/weather.png)
+<div style="width:100%"><img src="imgs/weather.png"/><br/>
 
 ### Nasa
-![](imgs/nasa.png)
+<div style="width:100%"><img src="imgs/nasa.png"/>
 
