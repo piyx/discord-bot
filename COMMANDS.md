@@ -2,8 +2,7 @@
 
 # Music
 
-> **play [music_name]** plays the song from youtube <br>
-> **pause** pauses the current playing song <br> > **resume** resumes the song <br> > **stop** stops playing music <br> > **np** displays the now playing song <br> > **queue** displays the song queue list <br> > **skip** skips to next song in queue <br> > **clear** clears the queue <br> > **volume [volume_percent]** sets the volume<br>
+> **play [music_name]** plays the song from youtube <br> > **pause** pauses the current playing song <br> > **resume** resumes the song <br> > **stop** stops playing music <br> > **np** displays the now playing song <br> > **queue** displays the song queue list <br> > **skip** skips to next song in queue <br> > **clear** clears the queue <br> > **volume [volume_percent]** sets the volume<br>
 
 ## Usage
 
@@ -29,8 +28,7 @@
 
 ## Questions
 
-> **ask [question]** Answers your question<br> > **boss** Displays owners name<br> > **coin** Flips a coin<br>
-> **dice** Rolls a dice<br>
+> **ask [question]** Answers your question<br> > **boss** Displays owners name<br> > **coin** Flips a coin<br> > **dice** Rolls a dice<br>
 
 ## Usage
 

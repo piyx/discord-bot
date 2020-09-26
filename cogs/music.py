@@ -5,7 +5,6 @@ from gettext import ngettext
 from discord.utils import get
 from youtube_dl import YoutubeDL
 from discord.ext import commands
-from utils.youtube import Youtube
 from discord import FFmpegPCMAudio
 from utils.yt_url import YoutubeUrl
 from utils.embeds import np_embed, q_embed
