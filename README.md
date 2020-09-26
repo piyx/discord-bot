@@ -12,9 +12,9 @@
 `cogs/dscrd.py`  
 `utils/embeds.py`  
 `utils/yt_url.py`  
-`utils/secret.py`
+`utils/secret.py`  
 `bot.py`  
-`music/` [This is an empty folder but very important. Don't delete this]
+`music/` [This is an empty folder but very important. Don't delete this. Songs will be downloaded in this folder and deleted from this folder.]
 
 # Bot commands
 
