@@ -18,6 +18,14 @@
 
 # Bot commands
 
+## `Bot prefix is '.'`
+### `To use any command prefix it with '.'`  
+### `Ex: .play happy pharell williams.`  
+* `.pause`
+* `.resume`
+<br>
+<hr>
+
 # Music
 
 > **play [music_name]** plays the song from youtube <br> 
