@@ -9,24 +9,28 @@ class Question(commands.Cog):
 
     @commands.command(aliases=['roll'])
     async def dice(self, ctx):
+        '''Rolls the dice'''
         embed = discord.Embed(
             title=f":game_die: You rolled {random.randint(1, 6)}", color=0x00ff10)
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['flip'])
     async def coin(self, ctx):
+        '''Flips a coin'''
         embed = discord.Embed(
             title=f"You flipped {random.choice(['Heads', 'Tails'])}", color=0x3781ff)
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['owner', 'creator'])
     async def boss(self, ctx):  # passing context
+        '''Displays owner name'''
         embed = discord.Embed(
             title=f'Nyx made me! He is my boss', color=0x457832)
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['8ball', '8b', 'question'])
     async def ask(self, ctx, *, question):
+        '''Replies to a question'''
         responses = ["It is certain", "It is decidedly so", "Without a doubt", "Yes, definitely",
                      "You may rely on it", "As I see it, yes", "Most Likely", "Outlook Good",
                      "Yes", "Signs point to yes", "Reply hazy, try again", "Ask again later",

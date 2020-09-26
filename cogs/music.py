@@ -24,9 +24,12 @@ class Music(commands.Cog):
     async def play(self, ctx, *, song_name):
         '''Plays song from first youtube search result'''
         voice_client = ctx.voice_client
-        if not voice_client:
-            await ctx.send(f"{error} **`You need to add me to voice channel first (use join command)`**")
+        voice = ctx.author.voice
+        if not voice:
+            await ctx.send(f"{error} **`You need to be in a voice channel`**")
             return
+        if not voice_client:
+            await voice.channel.connect()
 
         self.voice = get(self.client.voice_clients, guild=ctx.guild)
 
@@ -146,6 +149,7 @@ class Music(commands.Cog):
 
     @commands.command()
     async def volume(self, ctx, volume: int):
+        '''Sets the volume'''
         if 0 <= volume <= 100:
             self.voice.source.volume = volume/100
             await ctx.send(f"**`Volume set to {volume}`**")
@@ -154,6 +158,7 @@ class Music(commands.Cog):
 
     @commands.command()
     async def skip(self, ctx):
+        '''Skips the current song'''
         if self.voice and self.q:
             self.voice.stop()
             await ctx.send(f"{wcm} **`Music skipped`**")
