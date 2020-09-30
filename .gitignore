@@ -4,3 +4,4 @@ Scripts/
 pyvenv.cfg
 etc/
 share/
+.gitignore
