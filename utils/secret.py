@@ -1,25 +1,19 @@
+import os
+
 # Reddit secret
-
 # Get it from https://www.reddit.com/prefs/apps/
-
-CLIENT_ID = ""
-CLIENT_SECRET = ""
-USER_AGENT = ""
+CLIENT_ID = os.getenv("REDDIT_CLIENT_ID")
+CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
+USER_AGENT = os.getenv("REDDIT_USER_AGENT")
 
 # Discord token
-
 # Get it from https://discord.com/developers/applications
-TOKEN = ""
+TOKEN = os.getenv("BOT_TOKEN")
 
 # Weather api_key
-
 # Get it from https://www.weatherapi.com/
-WEATHER_API = ""
-
-# Youtube api key
-YOUTUBE_API_KEY = ""  # Not required
+WEATHER_API = os.getenv("WEATHER_API")
 
 # Nasa api
-
 # Get it from https://api.nasa.gov/
-NASA_API = ""
+NASA_API = os.getenv("NASA_API")
