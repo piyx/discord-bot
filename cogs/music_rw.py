@@ -110,13 +110,13 @@ class Music(commands.Cog):
                 mp.player.play(FFmpegPCMAudio(folder+song), after=lambda x: check_queue())
                 mp.player.source = discord.PCMVolumeTransformer(mp.player.source, volume=1.0)
 
-            embed = np_embed(ctx, mp.current)
-            return await ctx.send(embed=embed)
+        embed = np_embed(ctx, mp.current)
+        return await ctx.send(embed=embed)
 
-            
-            # If song is already playing, add song to queue
-            await ctx.send(f"{bcm} **`Song has been added to queue`**")
-            mp.q.append(data)
+        
+        # If song is already playing, add song to queue
+        await ctx.send(f"{bcm} **`Song has been added to queue`**")
+        mp.q.append(data)
     
     @commands.command()
     async def pause(self, ctx):
