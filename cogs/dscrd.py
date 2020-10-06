@@ -1,5 +1,6 @@
 import discord
 from discord.ext import tasks
+from discord.utils import get
 from discord.ext import commands
 from utils.embeds import wcm, bcm, error
 
@@ -38,15 +39,21 @@ class Discord(commands.Cog):
 
     @commands.command()
     async def join(self, ctx):
-        voice = ctx.author.voice
+        if not ctx.author.voice:
+            return await ctx.send(f"{error} **`You need to be in a voice channel`**")
+
+        channel = ctx.author.voice.channel
         voice_client = ctx.voice_client
+
+        if voice_client and voice_client.is_playing():
+            return await ctx.send(f"{error} **`Can't use this command when playing music in a channel!`**")
+
         if voice_client:
-            await ctx.send(f"{bcm} `Already connected to voice channel`")
-        elif voice:  # Check if member is connected to voice channel
-            await voice.channel.connect()
-            await ctx.send(f"{wcm} **`Joined {ctx.author.voice.channel}`**")
-        else:
-            await ctx.send(f"{error} **`You need to be in a voice channel`**")
+            await ctx.send(f"{wcm} **`Joined {channel}`**")
+            return await ctx.voice_client.move_to(channel)
+
+        await channel.connect()
+        await ctx.send(f"{wcm} **`Joined {channel}`**")
 
     @commands.command(aliases=['disconnect'])
     async def leave(self, ctx):
