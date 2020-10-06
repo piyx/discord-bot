@@ -53,6 +53,7 @@ class Music(commands.Cog):
         if server not in self.players:
             self.players[server] = MusicPlayer(voice, data)
         
+        
         # Music player
         mp = self.players[server]
         folder = f"{self.path}{server}/"
@@ -97,24 +98,25 @@ class Music(commands.Cog):
             mp.player.play(FFmpegPCMAudio(folder+song), after=lambda x: check_queue())
             mp.player.source = discord.PCMVolumeTransformer(mp.player.source, volume=1.0)
         
-        # If song is not playingm download it and play it
-        if not mp.player.is_playing():
-            sucess = download(mp.current['url'])
-        
-            if not sucess:
-                return await ctx.send(f"{error} **`Song cannot be streamed`**")
-
+        async with ctx.typing():
+            # If song is not playingm download it and play it
+            if not mp.player.is_playing():
+                sucess = download(mp.current['url'])
             
-            mp.player.play(FFmpegPCMAudio(folder+song), after=lambda x: check_queue())
-            mp.player.source = discord.PCMVolumeTransformer(mp.player.source, volume=1.0)
+                if not sucess:
+                    return await ctx.send(f"{error} **`Song cannot be streamed`**")
+
+                
+                mp.player.play(FFmpegPCMAudio(folder+song), after=lambda x: check_queue())
+                mp.player.source = discord.PCMVolumeTransformer(mp.player.source, volume=1.0)
 
             embed = np_embed(ctx, mp.current)
             return await ctx.send(embed=embed)
-        
-        # If song is already playing, add song to queue
-        await ctx.send(f"{bcm} **`Song has been added to queue`**")
-        mp.q.append(data)
-        return
+
+            
+            # If song is already playing, add song to queue
+            await ctx.send(f"{bcm} **`Song has been added to queue`**")
+            mp.q.append(data)
     
     @commands.command()
     async def pause(self, ctx):
