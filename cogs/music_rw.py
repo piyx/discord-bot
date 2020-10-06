@@ -9,7 +9,7 @@ from discord import FFmpegPCMAudio
 from utils.yt_url import YoutubeUrl
 from utils.embeds import np_embed, q_embed
 from collections import defaultdict
-from utils.embeds import wcm, bcm, error, pause, resume
+from utils.embeds import wcm, bcm, error, pause, resume, stop
 
 
 # Note: mp = music_player
@@ -109,6 +109,8 @@ class Music(commands.Cog):
                 
                 mp.player.play(FFmpegPCMAudio(folder+song), after=lambda x: check_queue())
                 mp.player.source = discord.PCMVolumeTransformer(mp.player.source, volume=1.0)
+        
+        print(os.listdir(self.path))
 
         embed = np_embed(ctx, mp.current)
         return await ctx.send(embed=embed)
