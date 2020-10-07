@@ -21,16 +21,7 @@ This version supports multiple instances of bot music players.
 
 ytdl_format_options = {
     'format': 'bestaudio/best',
-    'restrictfilenames': True,
-    'noplaylist': True,
-    'nocheckcertificate': True,
-    'ignoreerrors': False,
-    'logtostderr': False,
-    'quiet': True,
-    'no_warnings': True,
-    'default_search': 'auto',
-    'source_address': '0.0.0.0',
-    'forceipv4': True # bind to ipv4 since ipv6 addresses cause issues sometimes
+    'verbose': True,
 }
 
 ffmpeg_options = {
