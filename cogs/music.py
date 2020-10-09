@@ -22,6 +22,8 @@ This version supports multiple instances of bot music players.
 ytdl_format_options = {
     'format': 'bestaudio/best',
     'verbose': True,
+    'forceipv4': True,
+    'cookies': True
 }
 
 ffmpeg_options = {
@@ -32,9 +34,9 @@ ffmpeg_options = {
 ytdl = YoutubeDL(ytdl_format_options)
 
 
-
 class NoMusicPlayingException(Exception):
     pass
+
 
 class MusicPlayer:
     def __init__(self, player, current):
@@ -42,12 +44,13 @@ class MusicPlayer:
         self.current = current
         self.q = []
 
+
 class Music(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.players = {}
         self.path = "./media/"
-    
+
     @commands.command()
     async def play(self, ctx, *, song_name):
         '''Plays song from first youtube search result'''
@@ -67,26 +70,25 @@ class Music(commands.Cog):
         print(voice)
         if server not in self.players:
             self.players[server] = MusicPlayer(voice, data)
-        
+
         print(self.players)
-        
-        
+
         # Music player
         mp = self.players[server]
         print(mp)
         folder = f"{self.path}{server}/"
         song = "song.mp3"
-        
+
         # Func to Download the song
         def download(url):
             # Make folder
             if str(server) not in os.listdir(self.path):
                 os.mkdir(folder)
-            
+
             # Remove existing song
             for item in os.listdir(folder):
                 os.remove(folder+item)
-            
+
             # Download song
             try:
                 ytdl_format_options['outtmpl'] = folder+song
@@ -95,7 +97,7 @@ class Music(commands.Cog):
             except Exception as e:
                 return False
             return True
-        
+
         def check_queue():
             # If q is empty, delete song and folder and the player
             if not mp.q:
@@ -105,26 +107,29 @@ class Music(commands.Cog):
                     os.rmdir(folder)
                     del self.players[server]
                 return
-            
+
             # If q is not empty, remove song and download next
             os.remove(folder+song)
             mp.current = mp.q.pop(0)
             download(mp.current['url'])
-            mp.player.play(FFmpegPCMAudio(folder+song), after=lambda x: check_queue())
-            mp.player.source = discord.PCMVolumeTransformer(mp.player.source, volume=1.0)
-        
+            mp.player.play(FFmpegPCMAudio(folder+song),
+                           after=lambda x: check_queue())
+            mp.player.source = discord.PCMVolumeTransformer(
+                mp.player.source, volume=1.0)
+
         # If song is not playingm download it and play it
         if not mp.player.is_playing():
             async with ctx.typing():
                 sucess = download(mp.current['url'])
-            
+
                 if not sucess:
                     return await ctx.send(f"{error} **`Song cannot be streamed`**")
 
-                
-                mp.player.play(FFmpegPCMAudio(folder+song), after=lambda x: check_queue())
-                mp.player.source = discord.PCMVolumeTransformer(mp.player.source, volume=1.0)
-        
+                mp.player.play(FFmpegPCMAudio(folder+song),
+                               after=lambda x: check_queue())
+                mp.player.source = discord.PCMVolumeTransformer(
+                    mp.player.source, volume=1.0)
+
             print(os.listdir(self.path))
 
             embed = np_embed(ctx, mp.current)
@@ -133,14 +138,14 @@ class Music(commands.Cog):
         # If song is already playing, add song to queue
         await ctx.send(f"{bcm} **`Song has been added to queue`**")
         mp.q.append(data)
-    
+
     @commands.command()
     async def pause(self, ctx):
         '''Pauses the song'''
         mp = self.players.get(ctx.guild.id, None)
         mp.player.pause()
         await ctx.send(f"`Music paused` {pause}")
-    
+
     @commands.command()
     async def resume(self, ctx):
         '''Resumes the song'''
@@ -154,7 +159,6 @@ class Music(commands.Cog):
 
         return await ctx.send(f"{error} **`Song is already being played`**")
 
-    
     @commands.command()
     async def stop(self, ctx):
         '''Stops the song'''
@@ -163,21 +167,20 @@ class Music(commands.Cog):
         mp.player.stop()
         await ctx.voice_client.disconnect()
         await ctx.send(f"`Music stopped` {stop}")
-    
+
     @commands.command()
     async def np(self, ctx):
         '''Displays the now playing song info'''
         mp = self.players.get(ctx.guild.id, None)
         embed = np_embed(ctx, mp.current)
         return await ctx.send(embed=embed)
-            
-    
+
     @commands.command()
     async def queue(self, ctx):
         mp = self.players.get(ctx.guild.id, None)
         embed = q_embed(ctx, mp.current, mp.q)
         return await ctx.send(embed=embed)
-    
+
     @commands.command()
     async def clear(self, ctx):
         '''Clears the queue'''
@@ -185,9 +188,9 @@ class Music(commands.Cog):
         if mp.q:
             mp.q.clear()
             return await ctx.send(f"{wcm} **`Queue cleared`**")
-        
+
         return await ctx.send(f"{bcm} **`No songs queued`**")
-    
+
     @commands.command()
     async def volume(self, ctx, volume: int):
         '''Sets the volume'''
@@ -195,9 +198,9 @@ class Music(commands.Cog):
         if 0 <= volume <= 100:
             mp.player.source.volume = volume/100
             return await ctx.send(f"**`Volume set to {volume}`**")
-        
+
         return await ctx.send(f"{error} **`Volume should be in range [0, 100]`**")
-    
+
     @commands.command()
     async def skip(self, ctx):
         '''Skips the current song'''
@@ -205,9 +208,8 @@ class Music(commands.Cog):
         if mp.q:
             mp.player.stop()
             return await ctx.send(f"{wcm} **`Music skipped`**")
-        
+
         return await ctx.send(f"{error} `Queue empty`")
-    
 
     @play.before_invoke
     async def ensure_voice(self, ctx):
@@ -216,7 +218,7 @@ class Music(commands.Cog):
                 await ctx.author.voice.channel.connect()
             else:
                 await ctx.send("You are not connected to a voice channel.")
-    
+
     @volume.before_invoke
     @pause.before_invoke
     @queue.before_invoke
@@ -228,9 +230,10 @@ class Music(commands.Cog):
         mp = self.players.get(ctx.guild.id, None)
         if mp and mp.player.is_playing():
             return
-        
+
         await ctx.send(f"{error} **`No music being played!`**")
         raise NoMusicPlayingException("No music is being played!")
+
 
 def setup(client):
     client.add_cog(Music(client))
