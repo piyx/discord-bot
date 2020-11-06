@@ -19,8 +19,25 @@
 
 ### Music
 
-`play`
 ![](imgs/play.jpg)
 
-`queue`
 ![](imgs/q.jpg)
+
+![](imgs/np.jpg)
+
+### Questions
+
+![](imgs/ques.jpg)
+![](imgs/luck.jpg)
+
+### Weather
+
+![](imgs/weather.jpg)
+![](imgs/astro.jpg)
+![](imgs/nasa.jpg)
+
+### Reddit
+
+![](imgs/reddit1.jpg)
+![](imgs/reddit2.jpg)
+![](imgs/reddit3.jpg)
