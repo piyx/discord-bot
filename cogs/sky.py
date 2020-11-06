@@ -74,7 +74,7 @@ class Sky(commands.Cog):
         if data:
             info, img = data
             embed = discord.Embed(
-                title=f"Astronomy picture of day", description=f"{info}", color=0x36AFDF)
+                title=f"Astronomy picture of day", color=0x36AFDF)
             embed.set_image(url=img)
         else:
             embed = discord.Embed(
