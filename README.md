@@ -19,9 +19,8 @@
 
 ### Music
 
-<img src="imgs/play.jpg" width="200"/> <img src="imgs/q.jpg" width="200"/>
+`play`
+![](imgs/play.jpg)
 
-![rename](imgs/play.jpg)
-
-
+`queue`
 ![](imgs/q.jpg)
