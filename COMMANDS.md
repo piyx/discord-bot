@@ -7,6 +7,16 @@
 | .flip                 | flips a coin                | .flip                |
 | .roll                 | rolls a dice                | .roll                |
 
+
+## Discord
+
+| Command               | Description                          | Example              |
+| :---                  |    :----                             |          :---        |
+| .join                 | Adds the bot to voice channel        | .join                |
+| .leave                | removes the bot from voice channel   | .leave               |
+| .delete [amount=5]    | deletes messages (default=5)         | .delete 100          |
+| .ping                 | displays the ping                    | .ping                |
+
 ## Music
 
 | Command               | Description                       | Example              |
@@ -20,16 +30,6 @@
 | .skip                 | skips to the next song in queue   | .skip                |
 | .clear                | clears the queue                  | .clear               |
 | .volume [percent]     | sets the volume                   | .volume 75           |
-
-
-## Discord
-
-| Command               | Description                          | Example              |
-| :---                  |    :----                             |          :---        |
-| .join                 | Adds the bot to voice channel        | .join                |
-| .leave                | removes the bot from voice channel   | .leave               |
-| .delete [amount=5]    | deletes messages (default=5)         | .delete 100          |
-| .ping                 | displays the ping                    | .ping                |
 
 ## Sky
 
