@@ -1,3 +1,12 @@
+## Questions
+
+| Command               | Description                 | Example              |
+| :---                  |    :----                    |          :---        |
+| .ask [question]       | answers the question        | .ask are you real?   |
+| .owner                | displays the owner          | .owner               |
+| .flip                 | flips a coin                | .flip                |
+| .roll                 | rolls a dice                | .roll                |
+
 ## Music
 
 | Command               | Description                       | Example              |
@@ -22,22 +31,6 @@
 | .delete [amount=5]    | deletes messages (default=5)         | .delete 100          |
 | .ping                 | displays the ping                    | .ping                |
 
-## Questions
-
-| Command               | Description                 | Example              |
-| :---                  |    :----                    |          :---        |
-| .ask [question]       | answers the question        | .ask are you real?   |
-| .owner                | displays the owner          | .owner               |
-| .flip                 | flips a coin                | .flip                |
-| .roll                 | rolls a dice                | .roll                |
-
-
-## Reddit
-
-| Command                        | Description                      | Example                |
-| :---                           |    :----                         |          :---          |
-| .reddit [subreddit] [category] | displays one post from subreddit | .reddit wallpapers top |
-
 ## Sky
 
 | Command               | Description                           | Example              |
@@ -45,3 +38,9 @@
 | .weather [city]       | displays the city's weather           | .weather bangalore   |
 | .astro [city]         | displays the city's astro info        | .astro bangalore     |
 | .nasa                 | displays astronomy picture of the day | .nasa                |
+
+## Reddit
+
+| Command                        | Description                      | Example                |
+| :---                           |    :----                         |          :---          |
+| .reddit [subreddit] [category] | displays one post from subreddit | .reddit wallpapers top |
