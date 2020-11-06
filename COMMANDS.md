@@ -42,6 +42,6 @@
 
 | Command               | Description                           | Example              |
 | :---                  |    :----                              |          :---        |
-| .weather[city]        | displays the city's weather           | .weather bangalore   |
+| .weather [city]       | displays the city's weather           | .weather bangalore   |
 | .astro [city]         | displays the city's astro info        | .astro bangalore     |
 | .nasa                 | displays astronomy picture of the day | .nasa                |
