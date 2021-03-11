@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv('.env')  # Create a env file and set your secret variables in it
 
 # Reddit secret
 # Get it from https://www.reddit.com/prefs/apps/
@@ -17,3 +20,4 @@ WEATHER_API = os.getenv("WEATHER_API")
 # Nasa api
 # Get it from https://api.nasa.gov/
 NASA_API = os.getenv("NASA_API")
+print(TOKEN)

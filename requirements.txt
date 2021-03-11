@@ -4,3 +4,4 @@ praw==7.1.0
 PyNaCl==1.4.0
 requests==2.24.0
 youtube-dl
+python_dotenv
