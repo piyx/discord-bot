@@ -3,6 +3,7 @@ import pafy
 import discord
 from gettext import ngettext
 from discord.utils import get
+from collections import deque
 from youtube_dl import YoutubeDL
 from discord.ext import commands
 from discord import FFmpegPCMAudio
@@ -42,7 +43,7 @@ class MusicPlayer:
     def __init__(self, player, current):
         self.player = player
         self.current = current
-        self.q = []
+        self.q = deque([])
 
 
 class Music(commands.Cog):
@@ -110,7 +111,7 @@ class Music(commands.Cog):
 
             # If q is not empty, remove song and download next
             os.remove(folder+song)
-            mp.current = mp.q.pop(0)
+            mp.current = mp.q.popleft()
             download(mp.current['url'])
             mp.player.play(FFmpegPCMAudio(folder+song),
                            after=lambda x: check_queue())
@@ -211,6 +212,15 @@ class Music(commands.Cog):
 
         return await ctx.send(f"{error} `Queue empty`")
 
+    @commands.command()
+    async def repeat(self, ctx, times: int):
+        '''Repeats the previous song'''
+        mp = self.players.get(ctx.guild.id, None)
+
+        for _ in range(times):
+            mp.q.appendleft(mp.current)
+        return await ctx.send(f"{wcm} **`Song will repeat for {times} times.`**")
+
     @play.before_invoke
     async def ensure_voice(self, ctx):
         if not ctx.voice_client:
@@ -226,6 +236,7 @@ class Music(commands.Cog):
     @stop.before_invoke
     @skip.before_invoke
     @np.before_invoke
+    @repeat.before_invoke
     async def song_playing(self, ctx):
         mp = self.players.get(ctx.guild.id, None)
         if mp and mp.player.is_playing():
