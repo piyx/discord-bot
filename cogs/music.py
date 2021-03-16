@@ -213,7 +213,7 @@ class Music(commands.Cog):
         return await ctx.send(f"{error} `Queue empty`")
 
     @commands.command()
-    async def repeat(self, ctx, times: int):
+    async def repeat(self, ctx, times: int = 2):
         '''Repeats the previous song'''
         mp = self.players.get(ctx.guild.id, None)
 
